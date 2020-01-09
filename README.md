@@ -1,4 +1,5 @@
 # Content
+This is zipHMM library by Bioinformatic Research Centre of Aarhus University. Downloaded from here: https://birc.au.dk/software/ziphmm/ and uploaded on GitHub repository for my personal use. 
 
 ## Build procedure:   
 
