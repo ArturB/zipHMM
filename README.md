@@ -1,22 +1,22 @@
-################## Content ##################
+# Content
 
-# Build procedure
-# Getting started
-# Using the C++ library
-# Using the Python library
-# Encoding HMMs
-### HMM example
-### C++ example
-### Python example
-# Encoding sequences
-# Executables
-### calibrate
-### build_forwarder
-### forward
-### generate_hmm
-### generate_seq
+- Build procedure
+- Getting started
+- Using the C++ library
+- Using the Python library
+- Encoding HMMs
+- HMM example
+- C++ example
+- Python example
+- Encoding sequences
+- Executables
+- calibrate
+- build_forwarder
+- forward
+- generate_hmm
+- generate_seq
 
-############### Build procedure: ############### 
+## Build procedure:   
 
 To build and install the library, unzip the directory and execute the
 following commands in a terminal:
@@ -50,7 +50,7 @@ parallelized algorithm and saves the number in a file (default is
 ~/.ziphmm.devices).
 
 
-############## Getting started #################
+## Getting started  
 
 Have a look at zipHMM/cpp_example.cpp and zipHMM/python_example.cpp
 and try running the following commands from the root directory.
@@ -60,7 +60,7 @@ $ zipHMM-0.0.1 $ bin/cpp_example
 $ zipHMM-0.0.1 $ cd zipHMM/
 $ zipHMM $ python python_example.py
 
-############ Using the C++ library #############
+## Using the C++ library  
 
 The main class in the library is Forwarder (forwarder.hpp and
 forwarder.cpp). Objects of this class represents an observed sequence
@@ -136,7 +136,7 @@ move the file, then leave the device_filename parameter out.
 
 See zipHMM/cpp_example.cpp for a simple example.
 
-########### Using the Python library ###########
+## Using the Python library  
 
 To use the Python library in another project, copy zipHMM/pyZipHMM.py
 and zipHMM/libpyZipHMM.so to the root of your project folder after
@@ -170,7 +170,7 @@ can be read from a file or build in Python as described below.
 
 See zipHMM/python_example.py for an example.
 
-################ Encoding HMMs #################
+## Encoding HMMs  
 
 An HMM consists of three matrices: 
 
@@ -187,7 +187,7 @@ These three matrices can either be build in the code (in C++ or
 Python) or they can be encoded in a text file. The format of the text
 file is as follows:
 
-## HMM example ######
+## HMM example  
 
 no_states
 3
@@ -206,7 +206,7 @@ B
 0.2 0.3 0.4 0.1
 0.3 0.4 0.1 0.2
 
-#####################
+----------------------------------
 
 To read and write HMMs from and to files in C++, use the methods
 
@@ -220,7 +220,7 @@ writeHMM(pi, A, B, filename) -> None
 
 To build a matrix in C++ do as illustrated in the following example:
 
-## C++ example ######
+## C++ example   
 
 #include "matrix.hpp"
 
@@ -232,11 +232,11 @@ m(0,1) = 0.2;
 ...
 m(2,3) = 0.2;
 
-#####################
+--------------------------------------
 
 To build a matrix in Python do as illustrated here:
 
-## Python example ####
+## Python example  
 
 import pyZipHMM
 
@@ -248,10 +248,10 @@ m[0,1] = 0.2
 ...
 m[2,3] = 0.2
 
-#####################
+-------------------------------
 
 
-############## Encoding sequences ##############
+## Encoding sequences  
 
 The alphabet of observables are encoded using integers. Thus if the
 size of the alphabet is M, the observables are encoded using 0, 1, 2,
@@ -260,16 +260,16 @@ the single observations are seperated by whitespace. See example.seq
 for an example.
 
 
-################ Executables ###################
+## Executables  
 
-## calibrate
+### calibrate
 
 Usage: bin/calibrate
 
 Finds the optimal number of threads to use in the parallelized version
 of the forward algorithm.
 
-## build_forwarder
+### build_forwarder
 
 Usage: bin/build_forwarder -s <sequence filename> -M <alphabet size> -o <output directory> [-N <number of states>]*
 
@@ -286,7 +286,7 @@ bin/build_forwarder -s example.seq -M 3 -o example_out
 bin/build_forwarder -s example.seq -M 3 -o example_out -N 2
 bin/build_forwarder -s example.seq -M 3 -o example_out -N 2 -N 4 -N 8 -N 16
 
-## forward
+### forward
 
 Usage: bin/forward (-s <sequence filename> -m <HMM filename> [-e #expected forward calls] [-o <output directory>] ) | (-d <preprocessing directory> -m <HMM filename>) [-p]
 
@@ -307,14 +307,14 @@ using the -o parameter:
 
 bin/forward -s example.seq -m example.hmm -e 500 -o example_out/
 
-## generate_hmm
+### generate_hmm
 
 Usage: bin/generate_hmm <number of states> <alphabet size> <HMM filename>
 
 Generates a random HMM with <number of states> states and <alphabet
 size> observables, and saves it to <HMM filename>.
 
-## generate_seq
+### generate_seq
 
 Usage: bin/generate_seq <HMM filename> <length> <observed sequence output filename> <state sequence output filename>
 
